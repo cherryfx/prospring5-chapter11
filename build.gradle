@@ -1,0 +1,35 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.8.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+group = 'com.cherry.prospring5'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', "Greenwich.SR3")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-quartz'
+    implementation 'org.springframework.cloud:spring-cloud-starter-task'
+    implementation 'org.springframework.data:spring-data-jpa'
+    implementation 'com.google.guava:guava:28.0-jre'
+    implementation 'joda-time:joda-time:2.9.9'
+    implementation 'org.jadira.usertype:usertype.core:6.0.1.GA'
+    implementation 'com.h2database:h2:1.4.199'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
